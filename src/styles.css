@@ -105,3 +105,73 @@
   background-clip: text;
   color: transparent;
 }
+
+/* Hero entrance motion (mirrors reference easing [.22,1,.36,1]) */
+@keyframes hero-word {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-zoom {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@utility hero-word {
+  animation: hero-word 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility hero-rise {
+  animation: hero-rise 0.6s ease-out both;
+}
+
+@utility hero-appear {
+  animation: hero-appear 0.6s ease-out both;
+}
+
+@utility hero-zoom {
+  animation: hero-zoom 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-word,
+  .hero-rise,
+  .hero-appear,
+  .hero-zoom {
+    animation: none;
+  }
+}
