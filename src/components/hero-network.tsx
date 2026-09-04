@@ -103,30 +103,33 @@ export function HeroNetwork({ className = "" }: { className?: string }) {
       // Links
       const range = isMobile ? 90 : 120;
       for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i]!;
         for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
+          const b = nodes[j]!;
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < range) {
             ctx.strokeStyle = `rgba(99,102,241,${(1 - dist / range) * 0.22})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
             ctx.stroke();
           }
         }
-        const dxc = nodes[i].x - cx;
-        const dyc = nodes[i].y - cy;
+        const dxc = a.x - cx;
+        const dyc = a.y - cy;
         const dc = Math.sqrt(dxc * dxc + dyc * dyc);
         if (dc < unit * 3.2) {
           ctx.strokeStyle = `rgba(6,182,212,${(1 - dc / (unit * 3.2)) * 0.18})`;
           ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.moveTo(a.x, a.y);
           ctx.lineTo(cx, cy);
           ctx.stroke();
         }
       }
+
 
       // Shield outline
       ctx.strokeStyle = "rgba(59,130,246,0.55)";
