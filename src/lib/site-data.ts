@@ -1,5 +1,5 @@
 export const CLUB_NAME = "Cybersecurity Club";
-export const COLLEGE_NAME = "College Name";
+export const COLLEGE_NAME = "Vignan's Institute of Information Technology";
 export const CLUB_EMAIL = "cybersec@college.edu";
 
 export const NAV_LINKS = [
