@@ -42,24 +42,45 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="grid-bg border-b border-border">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-24">
+      <section className="relative overflow-hidden border-b border-border pt-14 sm:pt-16 lg:pt-24">
+        <div className="grid-bg pointer-events-none absolute inset-0 opacity-70" />
+        <div className="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-b from-primary/10 via-cyan/5 to-transparent blur-3xl" />
+        <div className="pointer-events-none absolute top-1/3 right-0 h-[400px] w-[400px] rounded-full bg-indigo/10 blur-3xl" />
+
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:pb-32">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3.5 py-1.5">
-              <span className="size-1.5 rounded-full bg-cyan" />
+            <p className="hero-appear inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3.5 py-1.5 backdrop-blur">
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-cyan opacity-60" />
+                <span className="relative inline-flex size-2 rounded-full bg-cyan" />
+              </span>
               <span className="eyebrow">Official Cybersecurity Club · College Name</span>
             </p>
-            <h1 className="mt-7 text-5xl font-extrabold leading-[0.95] sm:text-6xl lg:text-7xl">
-              Think.Hack.
-              <br />
-              <span className="text-gradient">Defend.</span>
+            <h1 className="mt-7 font-extrabold tracking-tight">
+              <span className="block text-5xl leading-[1.02] sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
+                {["Think.", "Hack.", "Defend."].map((word, i) => (
+                  <span
+                    key={word}
+                    className="hero-word inline-block"
+                    style={{ animationDelay: `${0.15 + i * 0.12}s` }}
+                  >
+                    <span className={i === 2 ? "text-gradient" : ""}>{word} </span>
+                  </span>
+                ))}
+              </span>
             </h1>
-            <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p
+              className="hero-rise mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
+              style={{ animationDelay: "0.5s" }}
+            >
               Building the next generation of cybersecurity minds. We bring together students
               passionate about cybersecurity, ethical hacking, digital forensics, AI security, CTFs,
               research and innovation — forging the next generation of digital defenders.
             </p>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <div
+              className="hero-rise mt-9 flex flex-wrap items-center gap-3"
+              style={{ animationDelay: "0.62s" }}
+            >
               <Link
                 to="/about"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-transform hover:-translate-y-0.5"
@@ -73,32 +94,33 @@ function Home() {
                 Join the Community
               </Link>
             </div>
-            <Link
-              to="/events"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-foreground"
-            >
-              <CalendarDays className="size-4 text-primary" /> View Our Events
-              <ArrowRight className="size-4 text-primary" />
-            </Link>
+            <div className="hero-appear mt-7" style={{ animationDelay: "0.8s" }}>
+              <Link
+                to="/events"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                <CalendarDays className="size-4" /> View Our Events
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-surface p-3 shadow-xl shadow-primary/5">
-            <img
-              src={heroImage}
-              alt="Abstract cybersecurity network visualization forming a shield"
-              width={1024}
-              height={1024}
-              className="aspect-square w-full rounded-2xl object-cover"
-            />
-            <div className="flex items-center justify-between px-3 pt-3 pb-1 font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground uppercase">
-              <span className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-emerald-500" /> network · secure
+          <div
+            className="hero-zoom relative mx-auto aspect-square w-full max-w-[520px]"
+            style={{ animationDelay: "0.3s" }}
+          >
+            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-background to-[#F0F5FF] ring-1 ring-border/60 ring-inset" />
+            <HeroNetwork className="absolute inset-0 size-full" />
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
+              <span className="inline-flex items-center gap-1.5">
+                <span className="size-1.5 rounded-full bg-emerald-400" /> network · secure
               </span>
               <span>nodes · 54</span>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* Stats */}
       <section className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
