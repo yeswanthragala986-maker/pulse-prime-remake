@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, CalendarDays, MapPin } from "lucide-react";
 import heroImage from "@/assets/cyber-network.jpg";
 import { CountUp } from "@/components/count-up";
+import { HeroNetwork } from "@/components/hero-network";
 import { SectionHead } from "@/components/page-hero";
 import {
   ACHIEVEMENTS,
